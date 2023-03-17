@@ -16,3 +16,7 @@ group :test do
   gem "pry-byebug"
   gem "rspec"
 end
+
+gem "rake"
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
