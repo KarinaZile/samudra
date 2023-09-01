@@ -61,7 +61,7 @@ task :generate_pdf, [:page] do |_task, args|
       left: 20,
       right: 20
     },
-    zoom: 1.3,
+    zoom: 1.1,
   )
 
   # then save to a file
