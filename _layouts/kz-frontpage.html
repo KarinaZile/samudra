@@ -1,83 +1,31 @@
 ---
-layout: default
-format: frontpage
+layout: compress
 ---
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    {% include _head.html %}
+</head>
+<body id="top-of-page" class="{{ layout.format }}">
+    {% unless page.skip_boilerplate %}
+    {% include _navigation.html %}
+    {% endunless %}
 
-<div class="row">
-    <div class="small-12 columns">
-        {{ content }}
-    </div>
-</div>
-
-{% comment %}
-*
-* First check, if there is a call for action-button
-*
-{% endcomment %}
-{% if page.callforaction.url contains 'http' %}
-{% assign url = '' %}
-{% else %}
-{% capture url %}{% endcapture %}
-{% endif %}
-{% if page.callforaction %}
-    <div class="row t30 b30">
-        <div class="small-12 text-center columns">
-            <a class="button large radius {{ page.callforaction.style }}" href="{{ page.callforaction.url }}"{% if page.callforaction.url contains 'http' %} {% endif %}>{{ page.callforaction.text }}</a>
-        </div><!-- /.small-12.columns -->
-    </div><!-- /.row -->
-{% endif %}
-
-
-{% include _widget_grid_layout.html widgets=page.widgets articles_per_row=3 %}
-
-
-{% unless site.posts == empty %}
-    {% assign primary_posts = site.posts | where: "primary_post", true %}
-
-    <div class="row t30 b20 homepage">
-        <div class="small-12 columns">
-            {% for post in primary_posts limit:1 %}
-            {% if post.image.homepage %}
-            <p>
-                <a href="{{ post.url }}" title="{{ post.title | escape_once }}"><img width="970" src="{{ site.urlimg }}{{ post.image.homepage }}" alt="{{ page.title | escape_once }}"></a>
-            </p>
-
-            {% if post.image.caption %}
-            <p class="text-right caption" style="font-size:10px">
-                {{ post.image.caption }}
-            </p>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-        </div><!-- /.small-12.columns -->
-    </div><!-- /.row -->
-
-
-    <div class="row t30">
-        <!-- Display primary post -->
-        <!-- USED TO BE <div class="medium-6 columns"> -->
-        <div class="small-12 columns">
-            {% for post in primary_posts limit:1 %}
-            <!-- {% if post.subheadline %}<p class="subheadline">{{ post.subheadline }}</p>{% endif %} -->
-            <h2 style="margin-top: 0px;"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-            <p>
-                {% if post.meta_description %}{{ post.meta_description | strip_html | escape }}{% else post.teaser %}{{ post.teaser | strip_html | escape }}{% endif %}
-                <a href="{{ post.url }}" title="Read {{ post.title | escape_once }}"><strong>{{ "Keep&nbsp;reading&nbsp;>" }}</strong></a>
-            </p>
-            {% endfor %}
+    {% include _masthead.html %}
+    <div class="front-page-header-background-image front-page-header-text-container">
+        <div class="row front-page-header-row">
+            <h1>{{ page.homepage_title }}</h1>
+            <p class="teaser front-page-header-teaser-text">{{ page.homepage_teaser }}</p>
+            <div class="front-page-header-content-text">
+                {{ content }}
+            </div>
         </div>
-
-        <!-- List of earlier pages -->
-        <!-- <div class="medium-6 columns">
-            <h3 style="margin-top: 0px;">Recently published:</h3>
-            <ul class="side-nav">
-                {% for post in site.posts limit:7 %}
-                    {% unless post.primary_post == true %}
-                      <li><a href="{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }} &middot; <strong>{{ post.title }}</strong></a></li>
-                    {% endunless %}
-                {% endfor %}
-                <li class="text-right"><a href="/archive/"><strong>{{ "Earlier&nbsp;articles&nbsp;>"s }}</strong></a></li>
-            </ul>
-        </div> -->
     </div>
-{% endunless %}
+
+    {% unless page.skip_boilerplate %}
+    {% include _footer.html %}
+    {% endunless %}
+
+    {% include _footer_scripts.html %}
+</body>
+</html>

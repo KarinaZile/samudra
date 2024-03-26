@@ -8,10 +8,15 @@ p {
 // was already zero by default, so we apply a negative margin to pull the ul list up a bit.
 // On small screens this looked best at 10px. On larger screens 15px.
 @media #{$small-only} {
-  p + ul { margin-top: -10px; }
+  p + ul {
+    margin-top: -10px;
+  }
 }
+
 @media #{$medium-up} {
-  p + ul { margin-top: -15px; }
+  p + ul {
+    margin-top: -15px;
+  }
 }
 
 .larger-word {
@@ -31,4 +36,83 @@ p {
 // pseudo-comments in <span> tags.
 .comment {
   display: none
+}
+
+.textured-background {
+  background-image: url('/images/pattern.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  background-blend-mode: lighten;
+}
+
+// Front page
+.front-page-header-background-image {
+  @extend .textured-background;
+}
+
+.front-page-header-text-container {
+  button {
+    width: 330px;
+  }
+}
+
+@media #{$medium-up} {
+  .front-page-header-row {
+    margin-left: 120px;
+    margin-right: 120px;
+    width: auto;
+  }
+  .front-page-header-text-container {
+    font-size: xx-large;
+  }
+
+  .front-page-header-teaser-text {
+    font-size: xx-large;
+  }
+
+  .front-page-header-background-image {
+    height: 100%;
+    padding-top: 60px;
+  }
+
+  .front-page-header-content-text {
+    padding-top: 60px;
+  }
+
+  .front-page-header-content-text p {
+    font-size: x-large;
+  }
+}
+
+@media #{$small-only} {
+  .front-page-header-row {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: auto;
+  }
+
+  .front-page-header-teaser-text {
+    font-size: x-large;
+  }
+
+  .front-page-header-background-image {
+    height: auto;
+    padding-top: 20px;
+  }
+
+  .front-page-header-content-text p {
+    font-size: large;
+  }
+}
+
+
+// Other pages
+.page-header-background-image {
+  @extend .textured-background;
+  height: 70px;
 }
