@@ -92,7 +92,7 @@ We wanted to build an organisation that solves global challenges by building fun
     <nav class="row">
       <section class="columns">
         <p>
-          &#169; Copyright 2020-2024 Samudra.world. All rights reserved. This website does not use cookies.
+          &#169; Copyright 2020-2025 Samudra.world. All rights reserved. This website does not use cookies.
         </p>
       </section>
     </nav>
